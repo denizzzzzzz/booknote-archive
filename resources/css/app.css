@@ -1,3 +1,199 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'Averia Serif Libre';
+    src: url('../../public/fonts/AveriaSerifLibre-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Averia Serif Libre';
+    src: url('../../public/fonts/AveriaSerifLibre-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Averia Serif Libre';
+    src: url('../../public/fonts/AveriaSerifLibre-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Averia Serif Libre';
+    src: url('../../public/fonts/AveriaSerifLibre-Light.ttf') format('truetype');
+    font-weight: 300;
+    /* Light */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Averia Serif Libre';
+    src: url('../../public/fonts/AveriaSerifLibre-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    /* Light */
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Averia Serif Libre';
+    src: url('../../public/fonts/AveriaSerifLibre-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Averia Serif Libre', serif;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+
+}
+
+.home-banner {
+    position: relative;
+    width: 100vw;
+    top: 0;
+    z-index: 10;
+    color: white;
+    overflow: hidden;
+}
+
+.home-banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
+
+.home-banner {
+    background-image: url('../../public/img/banner-booknote-archive.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.cta-button {
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s ease;
+}
+
+.cta-button.tutorial::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: white;
+    background: #01A262;
+    transition: top 0.3s ease;
+    z-index: -1;
+}
+
+.cta-button.tutorial:hover {
+    color: white;
+}
+
+.cta-button.tutorial:hover::after {
+    top: 0;
+}
+
+.cta-button.start-organizing::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: black;
+    background: white;
+    transition: top 0.3s ease;
+    z-index: -1;
+}
+
+.cta-button.start-organizing:hover {
+    color: black;
+}
+
+.cta-button.start-organizing:hover::after {
+    top: 0;
+}
+
+header {
+    position: fixed;
+    z-index: 20;
+    color: white;
+    width: 100vw;
+}
+
+.main-header {
+    transition: background-color 0.5s ease-in-out;
+    background-color: transparent;
+}
+
+.main-header::before {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background-color: #252525;
+    transition: top 0.5s ease-in-out;
+    z-index: -1;
+}
+
+.main-header.scrolled::before {
+    top: 0;
+}
+
+footer {
+    position: relative;
+}
+
+.book-edge {
+    position: relative;
+}
+
+.book-edge::before {
+    content: "";
+    position: absolute;
+    left: 0%;
+    bottom: 0%;
+    background-color: white;
+    width: 19px;
+    height: 41px;
+    transform: rotate(50deg);
+    z-index: 1;
+}
+
+.book-edge::after {
+    content: "";
+    position: absolute;
+    right: 0%;
+    bottom: 0%;
+    background-color: white;
+    width: 19px;
+    height: 41px;
+    transform: rotate(-50deg);
+    z-index: 1;
+}
+
+#mobileMenu{
+    position: fixed;
+    width: 80%;
+    height: 45vh;
+    top: 0;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
