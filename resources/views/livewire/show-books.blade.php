@@ -1,21 +1,15 @@
-<div class="books gap-0 items-center justify-items-center pt-10 mb-20">
-    @foreach($books as $index => $book)
+<div class="books gap-0 items-center justify-items-center">
     @php
-    $title = $book->title;
-    $maxLength = 24;
-    $trimmedTitle = mb_strlen($title) > $maxLength ? mb_substr($title, 0, $maxLength-3) . '...' : $title;
+
+    $groupedBooks = $books->sortBy('title')->groupBy(function($item) {
+    return strtoupper(substr($item->title, 0, 1));
+    });
     @endphp
-    <h4 class="book text-base font-bold">{{ $trimmedTitle }}</h4>
-    @if($loop->iteration % 8 === 0 && !$loop->last)
-    <div class="spacer"></div>
-    <div class="spacer"></div>
-    @endif
+
+    @foreach($groupedBooks as $letter => $booksByLetter)
+
+    @foreach($booksByLetter as $book)
+    <h4 class="book text-base font-bold "><span class="text-[#01A262]">{{ $letter }} </span>{{ $book->title }}</h4>
     @endforeach
-    {{ $books->links() }}
-    <style>
-        .spacer {
-            flex: 1;
-            height: 40px;
-        }
-    </style>
+    @endforeach
 </div>

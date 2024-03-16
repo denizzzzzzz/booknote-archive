@@ -54,7 +54,7 @@ body {
 }
 header {
     position: fixed;
-    z-index: 20;
+    z-index: 100;
     color: white;
     width: 100vw;
 }
@@ -223,18 +223,117 @@ footer {
     height: 700px;
     width: 100%;
     background: #292117;
+    position: relative;
+    border: solid 6px #574631;
+    overflow-y: auto;
 }
+
+.closet::-webkit-scrollbar-track {
+    background: #38302e; 
+    border-radius: 10px;
+    z-index: -1;
+}
+
+.closet::-webkit-scrollbar-thumb {
+    background: #574631; 
+}
+
+
+.closet::-webkit-scrollbar-thumb:hover {
+    background: #705c4a; 
+}
+
+.closet::-webkit-scrollbar {
+    width: 6px; 
+}
+
 .books {
-    display: grid;
-    grid-template-columns: repeat(2, 50%);
-    column-gap: 0px;
+    display: flex;
+    flex-direction: column;
 }
 
 .book{
     background-color: white;
     width: auto; 
     padding: 10px 2px;
-    width: 224px;
-    border-top: solid 2px grey;
-    border-bottom: solid 2px grey;
+    width: 100%;
+    border-top: solid 2px #01A262;
+    cursor: pointer;
+}
+
+.door-left, .door-right {
+    position: absolute;
+    width: 50%;
+    top: -1%; 
+    height: 101%;
+    background-color: #705B3F;
+    transition: all 0.5s ease;
+    z-index: 20;
+}
+
+.door-left {
+    left: 0;
+    border-right:solid 4px #292117;
+}
+
+.door-right {
+    right: 0;
+    border-left:solid 4px #292117;
+}
+
+.closet:hover .door-left, .closet:hover .door-right {
+    width:3%;
+}
+.closet:hover .knob-left, .closet:hover .knob-right{
+    opacity: 0;
+}
+
+.knob-left{
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    border-radius: 100%;
+    background-color: #2E251A;
+    top: 50%;
+    left: 70%;
+    transition: ease .5s;
+}
+.knob-right{
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    border-radius: 100%;
+    background-color: #2E251A;
+    top: 50%;
+    right: 70%;
+    transition: ease .5s;
+}
+.closet-depth{
+    height: 10px;
+    width: 100%;
+    background-color: #2E251A;
+    position: relative;
+}
+
+.closet-depth::before{
+    content: "";
+    position: absolute;
+    right: 0%;
+    bottom: 0%;
+    background-color: white;
+    width: 19px;
+    height: 40px;
+    transform: rotate(-50deg);
+    z-index: 1;
+}
+.closet-depth::after{
+    content: "";
+    position: absolute;
+    left: 0%;
+    bottom: 0%;
+    background-color: white;
+    width: 19px;
+    height: 40px;
+    transform: rotate(50deg);
+    z-index: 1;
 }

@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="home-banner py-20">
+<div class="home-banner py-40">
     <h1 class="text-center text-7xl mb-10 font-light leading-tight">{{ Auth::user()->name }}'s Library</h1>
+
     <div class="flex flex-row justify-center text-2xl">
+
         <div x-data="{ open: false }">
             <button @click="open = true" class="cta-button start-organizing border-4 px-20 py-2 font-bold">New Closet</button>
 
@@ -12,7 +14,6 @@
                     <button @click="open = false" class="absolute top-0 right-0 mt-2 mr-2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-lg">
                         X
                     </button>
-
                     @livewire('select-book-genre')
                     <button @click="open = false">Close</button>
                 </div>
@@ -21,20 +22,26 @@
 
     </div>
 </div>
+<div class="bg-[#252525] flex justify-center p-10">
+    <div class="flex gap-6">
+        <input class="w-80 text-xl" placeholder="Search your books..." type="text" name="search" id="search" />
+        <button class="bg-white px-4 py-1 text-xl font-bold uppercase">Search</button>
+    </div>
+</div>
 <div class="w-2/3 mx-auto pt-20 pb-40">
     @if (session('success'))
     <div class="bg-green-100 border mb-10 border-green-400 text-green-700 px-4 py-3 rounded relative text-center" role="alert">
-    {{ session('success') }}
-</div>
+        {{ session('success') }}
+    </div>
 
     @endif
     @livewire('show-book-genres', ['userId' => Auth::user()->id])
-    </div>
-    <div class="border-4 w-2/3 mx-auto mb-60">
-        <div class="text-center m-60">
-        <h2 class="text-6xl mb-10" >New Closet</h2>
+</div>
+<div class="border-4 w-2/3 mx-auto mb-60">
+    <div class="text-center m-60">
+        <h2 class="text-6xl mb-10">New Closet</h2>
         <h4 class="text-7xl py-6 px-4 w-32  m-auto bg-black text-white">+</h4>
-        </div>
     </div>
+</div>
 
-@endsection 
+@endsection

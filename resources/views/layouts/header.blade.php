@@ -16,11 +16,27 @@
         <div class="hidden md:flex flex-row-reverse gap-2 items-center" id="menu">
             @if (Route::has('login'))
                 @auth
+                <a href="{{ route('library') }}">
+                            <button class="px-20 py-2 font-bold bg-[#01A262] text-white">
+                                My Library
+                            </button>
+                        </a>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <button class="px-20 py-2 font-bold bg-black text-white">
                             Sign out
                         </button>
                     </a>
+                    <a href="#">
+                            <button class="px-20 py-2 font-bold">
+                                FAQ
+                            </button>
+                        </a>
+                        <a href="#">
+                            <button class="px-20 py-2 font-bold">
+                                Tutorial
+                            </button>
+                        </a>
+                      
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
