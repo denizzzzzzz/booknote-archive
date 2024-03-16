@@ -52,6 +52,38 @@ body {
     overflow-x: hidden;
 
 }
+header {
+    position: fixed;
+    z-index: 20;
+    color: white;
+    width: 100vw;
+}
+
+.main-header {
+    transition: background-color 0.5s ease-in-out;
+    background-color: transparent;
+}
+
+.main-header::before {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background-color: #252525;
+    transition: top 0.5s ease-in-out;
+    z-index: -1;
+}
+
+.main-header.scrolled::before {
+    top: 0;
+}
+
+.register-header-bg {
+    background-color: #252525;
+  }
+
 
 .home-banner {
     position: relative;
@@ -60,6 +92,9 @@ body {
     z-index: 10;
     color: white;
     overflow: hidden;
+    background-image: url('../../public/img/banner-booknote-archive.jpg');
+    background-position: center;
+    background-size: cover;
 }
 
 .home-banner::before {
@@ -71,12 +106,6 @@ body {
     bottom: 0;
     background: rgba(0, 0, 0, 0.7);
     z-index: -1;
-}
-
-.home-banner {
-    background-image: url('../../public/img/banner-booknote-archive.jpg');
-    background-position: center;
-    background-size: cover;
 }
 
 .cta-button {
@@ -127,32 +156,25 @@ body {
     top: 0;
 }
 
-header {
-    position: fixed;
-    z-index: 20;
-    color: white;
-    width: 100vw;
+.video-loop{
+    position: relative;
 }
 
-.main-header {
-    transition: background-color 0.5s ease-in-out;
-    background-color: transparent;
-}
-
-.main-header::before {
+.video-loop::before {
     content: "";
     position: absolute;
-    top: -100%;
+    top: 0;
     left: 0;
     right: 0;
-    height: 100%;
-    background-color: #252525;
-    transition: top 0.5s ease-in-out;
-    z-index: -1;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    transition: background 0.5s ease;
 }
 
-.main-header.scrolled::before {
-    top: 0;
+.video-loop:hover::before {
+    background: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
 footer {
@@ -196,4 +218,23 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 100px;
+}
+.closet{
+    height: 700px;
+    width: 100%;
+    background: #292117;
+}
+.books {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    column-gap: 0px;
+}
+
+.book{
+    background-color: white;
+    width: auto; 
+    padding: 10px 2px;
+    width: 224px;
+    border-top: solid 2px grey;
+    border-bottom: solid 2px grey;
 }
