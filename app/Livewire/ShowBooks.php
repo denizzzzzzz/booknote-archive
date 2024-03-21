@@ -21,7 +21,9 @@ class ShowBooks extends Component
     public function render()
     {
 
-        $books = Book::where('genre_id', $this->genreId)->paginate(100); 
+        $books = Book::where('genre_id', $this->genreId)
+        ->orderBy('title') 
+        ->paginate(1000); 
         return view('livewire.show-books', compact('books'));
     }
 }

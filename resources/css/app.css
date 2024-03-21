@@ -1,6 +1,13 @@
+@import '@fortawesome/fontawesome-free/css/fontawesome.css';
+@import '@fortawesome/fontawesome-free/css/regular.css';
+@import '@fortawesome/fontawesome-free/css/solid.css';
+@import '@fortawesome/fontawesome-free/css/brands.css';
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 @font-face {
     font-family: 'Averia Serif Libre';
@@ -50,8 +57,9 @@ body {
     font-family: 'Averia Serif Libre', serif;
     scroll-behavior: smooth;
     overflow-x: hidden;
-
+    background-color: rgb(253, 253, 253);
 }
+
 header {
     position: fixed;
     z-index: 100;
@@ -82,7 +90,7 @@ header {
 
 .register-header-bg {
     background-color: #252525;
-  }
+}
 
 
 .home-banner {
@@ -98,6 +106,52 @@ header {
 }
 
 .home-banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
+
+.library-banner {
+    position: relative;
+    width: 100vw;
+    top: 0;
+    z-index: 10;
+    color: white;
+    overflow: hidden;
+    background-image: url('../../public/img/banner-library-booknote-archive.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.library-banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
+
+.notes-banner {
+    position: relative;
+    width: 100vw;
+    top: 0;
+    z-index: 10;
+    color: white;
+    overflow: hidden;
+    background-image: url('../../public/img/banner-notes-booknote-archive.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.notes-banner::before {
     content: "";
     position: absolute;
     top: 0;
@@ -156,7 +210,7 @@ header {
     top: 0;
 }
 
-.video-loop{
+.video-loop {
     position: relative;
 }
 
@@ -209,7 +263,7 @@ footer {
     z-index: 1;
 }
 
-#mobileMenu{
+#mobileMenu {
     position: fixed;
     width: 80%;
     height: 45vh;
@@ -219,7 +273,8 @@ footer {
     flex-direction: column;
     gap: 100px;
 }
-.closet{
+
+.closet {
     height: 700px;
     width: 100%;
     background: #292117;
@@ -229,22 +284,22 @@ footer {
 }
 
 .closet::-webkit-scrollbar-track {
-    background: #38302e; 
+    background: #38302e;
     border-radius: 10px;
     z-index: -1;
 }
 
 .closet::-webkit-scrollbar-thumb {
-    background: #574631; 
+    background: #574631;
 }
 
 
 .closet::-webkit-scrollbar-thumb:hover {
-    background: #705c4a; 
+    background: #705c4a;
 }
 
 .closet::-webkit-scrollbar {
-    width: 6px; 
+    width: 6px;
 }
 
 .books {
@@ -252,19 +307,20 @@ footer {
     flex-direction: column;
 }
 
-.book{
+.book {
     background-color: white;
-    width: auto; 
+    width: auto;
     padding: 10px 2px;
     width: 100%;
     border-top: solid 2px #01A262;
     cursor: pointer;
 }
 
-.door-left, .door-right {
+.door-left,
+.door-right {
     position: absolute;
     width: 50%;
-    top: -1%; 
+    top: -1%;
     height: 101%;
     background-color: #705B3F;
     transition: all 0.5s ease;
@@ -273,22 +329,25 @@ footer {
 
 .door-left {
     left: 0;
-    border-right:solid 4px #292117;
+    border-right: solid 4px #292117;
 }
 
 .door-right {
     right: 0;
-    border-left:solid 4px #292117;
+    border-left: solid 4px #292117;
 }
 
-.closet:hover .door-left, .closet:hover .door-right {
-    width:3%;
+.closet:hover .door-left,
+.closet:hover .door-right {
+    width: 3%;
 }
-.closet:hover .knob-left, .closet:hover .knob-right{
+
+.closet:hover .knob-left,
+.closet:hover .knob-right {
     opacity: 0;
 }
 
-.knob-left{
+.knob-left {
     position: absolute;
     height: 28px;
     width: 28px;
@@ -298,7 +357,8 @@ footer {
     left: 70%;
     transition: ease .5s;
 }
-.knob-right{
+
+.knob-right {
     position: absolute;
     height: 28px;
     width: 28px;
@@ -308,14 +368,15 @@ footer {
     right: 70%;
     transition: ease .5s;
 }
-.closet-depth{
+
+.closet-depth {
     height: 10px;
     width: 100%;
     background-color: #2E251A;
     position: relative;
 }
 
-.closet-depth::before{
+.closet-depth::before {
     content: "";
     position: absolute;
     right: 0%;
@@ -326,7 +387,8 @@ footer {
     transform: rotate(-50deg);
     z-index: 1;
 }
-.closet-depth::after{
+
+.closet-depth::after {
     content: "";
     position: absolute;
     left: 0%;
@@ -336,4 +398,86 @@ footer {
     height: 40px;
     transform: rotate(50deg);
     z-index: 1;
+}
+
+.add-books-form {
+    width: 600px;
+}
+
+.notes-container {
+    width: 80%;
+    margin: 35px auto;
+    min-height: 800px;
+    background: #252525;
+}
+
+.genre-container {
+    width: 80%;
+    margin: 35px auto;
+    min-height: 400px;
+    background: #252525;
+}
+
+.trix-button-row span {
+    background-color: white !important;
+}
+
+.modal-box {
+    max-width: 49.29rem !important;
+}
+
+.trix-content {
+    height: 220px !important;
+}
+
+.collapse-content {
+    box-shadow: 0px 4px 14px -7px rgba(0, 0, 0, 0.7);
+}
+
+.books {
+    display: flex; 
+    flex-direction: row; 
+    overflow-x: auto; 
+    overflow-y: hidden; 
+    gap: 20px; 
+    max-width: 100%; 
+    position: relative;
+    z-index: 1;
+}
+
+.book-container {
+    min-width: 50px; 
+    height: 200px; 
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.book {
+    position: absolute;
+    width: 200px;
+    white-space: nowrap;
+    transform: rotate(-90deg);
+    transform-origin: center;
+    padding: 16px;
+    color: black;
+    border: none;
+    border-left: solid 6px black;
+    border-right: solid 6px black;
+    transition: ease .3s;
+}
+
+.shelf {
+    background-color: #705B3F; 
+    height: 20px; 
+    width: 100%;
+    margin-top: -4px;
+}
+.shelf-depth{
+    background-color: #574631; 
+    height: 10px; 
+    width: 100%;
+    margin-top: -4px;
+ 
 }

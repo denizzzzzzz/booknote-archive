@@ -23,12 +23,10 @@ class SelectBookGenre extends Component
     public function confirmSelection()
     {
         if (!is_null($this->selectedGenre)) {
-
             $user = auth()->user();
             $user->bookGenres()->attach($this->selectedGenre);
 
             return redirect('library')->with('success', 'Closet Added!');
-
         }
     }
 

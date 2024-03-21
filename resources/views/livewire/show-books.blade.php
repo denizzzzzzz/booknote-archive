@@ -1,15 +1,30 @@
-<div class="books gap-0 items-center justify-items-center">
-    @php
-
-    $groupedBooks = $books->sortBy('title')->groupBy(function($item) {
-    return strtoupper(substr($item->title, 0, 1));
-    });
-    @endphp
-
-    @foreach($groupedBooks as $letter => $booksByLetter)
-
-    @foreach($booksByLetter as $book)
-    <h4 class="book text-base font-bold "><span class="text-[#01A262]">{{ $letter }} </span>{{ $book->title }}</h4>
-    @endforeach
-    @endforeach
+<div>
+<div class="books">
+@if($books->isEmpty())
+<div class="text-center w-full mb-12">
+<h3 class="text-2xl ">Your books would go here, add your first book with the white button below ;)</h3>
 </div>
+
+@else
+    @foreach($books as $book)
+    <div class="book-container">
+        <div class="book">
+            <a href="{{ route('show_notes', $book->id) }}" class="book-link">
+                {{ $book->title }}
+            </a>
+        </div>
+    </div>
+        <!-- <form action="{{ route('books.destroy', $book->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="px-4 py-2 hover:bg-red-600 hover:text-white">X</button>
+        </form> -->
+
+    @endforeach
+    @endif
+</div>
+<div class="shelf"></div>
+<div class="shelf-depth"></div>
+</div>
+
+

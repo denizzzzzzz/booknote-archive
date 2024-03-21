@@ -19,6 +19,8 @@
         </a>
     </div>
 </div>
+
+
 <div class="video-loop">
     <video autoplay muted loop style="max-width: 100%; height: auto;">
         <source src="{{ asset('img/video-example.mp4') }}" type="video/mp4">
