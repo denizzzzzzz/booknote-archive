@@ -1,70 +1,80 @@
-@import '@fortawesome/fontawesome-free/css/fontawesome.css';
-@import '@fortawesome/fontawesome-free/css/regular.css';
-@import '@fortawesome/fontawesome-free/css/solid.css';
-@import '@fortawesome/fontawesome-free/css/brands.css';
-
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
-@font-face {
-    font-family: 'Averia Serif Libre';
-    src: url('../../public/fonts/AveriaSerifLibre-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
+:root {
+    --font-size-h1: 1.75rem;
+    --font-size-h2: 1.5rem;
+    --font-size-h3: 1.25rem;
+    --font-size-h4: 1.125rem;
+    --font-size-h5: 1rem; 
+    --font-size-p: 1rem;
+    --font-size-button: 0.875rem; 
 }
 
-@font-face {
-    font-family: 'Averia Serif Libre';
-    src: url('../../public/fonts/AveriaSerifLibre-BoldItalic.ttf') format('truetype');
-    font-weight: bold;
-    font-style: italic;
+@screen md {
+    :root {
+        --font-size-h1: 2.25rem;
+        --font-size-h2: 2rem;
+        --font-size-h3: 1.75rem;
+        --font-size-h4: 1.5rem; 
+        --font-size-h5: 1.3rem; 
+        --font-size-p: 1.125rem; 
+        --font-size-button: 1rem; 
+    }
 }
 
-@font-face {
-    font-family: 'Averia Serif Libre';
-    src: url('../../public/fonts/AveriaSerifLibre-Italic.ttf') format('truetype');
-    font-weight: normal;
-    font-style: italic;
+
+@screen lg  {
+    :root {
+        --font-size-h1: 3rem; 
+        --font-size-h2: 2.5rem;
+        --font-size-h3: 2.25rem;
+        --font-size-h4: 2rem; 
+        --font-size-h5: 1.4rem; 
+        --font-size-p: 1.25rem; 
+        --font-size-button: 1.125rem; 
+    }
 }
 
-@font-face {
-    font-family: 'Averia Serif Libre';
-    src: url('../../public/fonts/AveriaSerifLibre-Light.ttf') format('truetype');
-    font-weight: 300;
-    /* Light */
-    font-style: normal;
+h1 {
+    font-size: var(--font-size-h1);
+}
+h2 {
+    font-size: var(--font-size-h2);
+}
+h3 {
+    font-size: var(--font-size-h3);
+}
+p {
+    font-size: var(--font-size-p);
+}
+h4 {
+    font-size: var(--font-size-h4);
+}
+h5{
+    font-size: var(--font-size-h5);
+}
+button {
+    font-size: var(--font-size-button);
+    transition: ease .5s;
 }
 
-@font-face {
-    font-family: 'Averia Serif Libre';
-    src: url('../../public/fonts/AveriaSerifLibre-LightItalic.ttf') format('truetype');
-    font-weight: 300;
-    /* Light */
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Averia Serif Libre';
-    src: url('../../public/fonts/AveriaSerifLibre-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
 
 body {
-    font-family: 'Averia Serif Libre', serif;
+    font-family: "Rethink Sans", sans-serif;
     scroll-behavior: smooth;
     overflow-x: hidden;
     background-color: rgb(253, 253, 253);
 }
-
+.hover-book{
+    transition: ease .2s;
+}
 header {
     position: fixed;
     z-index: 100;
     color: white;
     width: 100vw;
+    padding: 2rem 3rem;
 }
 
 .main-header {
@@ -79,7 +89,7 @@ header {
     left: 0;
     right: 0;
     height: 100%;
-    background-color: #252525;
+    background-color: black;
     transition: top 0.5s ease-in-out;
     z-index: -1;
 }
@@ -89,9 +99,8 @@ header {
 }
 
 .register-header-bg {
-    background-color: #252525;
+    background-color: black;
 }
-
 
 .home-banner {
     position: relative;
@@ -103,6 +112,11 @@ header {
     background-image: url('../../public/img/banner-booknote-archive.jpg');
     background-position: center;
     background-size: cover;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
 }
 
 .home-banner::before {
@@ -126,6 +140,11 @@ header {
     background-image: url('../../public/img/banner-library-booknote-archive.jpg');
     background-position: center;
     background-size: cover;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
 }
 
 .library-banner::before {
@@ -149,6 +168,11 @@ header {
     background-image: url('../../public/img/banner-notes-booknote-archive.jpg');
     background-position: center;
     background-size: cover;
+    height: 25vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
 }
 
 .notes-banner::before {
@@ -166,49 +190,30 @@ header {
     position: relative;
     overflow: hidden;
     transition: color 0.3s ease;
+    color: white;
+    border: solid 2px #01A262;
 }
 
-.cta-button.tutorial::after {
+.cta-button::after {
     content: '';
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
     bottom: 0;
-    color: white;
     background: #01A262;
     transition: top 0.3s ease;
     z-index: -1;
 }
 
-.cta-button.tutorial:hover {
+.cta-button:hover::after {
+    top: 0;
+}
+
+.cta-button:hover {
     color: white;
 }
 
-.cta-button.tutorial:hover::after {
-    top: 0;
-}
-
-.cta-button.start-organizing::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    color: black;
-    background: white;
-    transition: top 0.3s ease;
-    z-index: -1;
-}
-
-.cta-button.start-organizing:hover {
-    color: black;
-}
-
-.cta-button.start-organizing:hover::after {
-    top: 0;
-}
 
 .video-loop {
     position: relative;
@@ -263,221 +268,76 @@ footer {
     z-index: 1;
 }
 
-#mobileMenu {
-    position: fixed;
-    width: 80%;
-    height: 45vh;
-    top: 0;
-    background: black;
-    display: flex;
-    flex-direction: column;
-    gap: 100px;
-}
 
-.closet {
-    height: 700px;
-    width: 100%;
-    background: #292117;
-    position: relative;
-    border: solid 6px #574631;
-    overflow-y: auto;
-}
-
-.closet::-webkit-scrollbar-track {
-    background: #38302e;
-    border-radius: 10px;
-    z-index: -1;
-}
-
-.closet::-webkit-scrollbar-thumb {
-    background: #574631;
-}
-
-
-.closet::-webkit-scrollbar-thumb:hover {
-    background: #705c4a;
-}
-
-.closet::-webkit-scrollbar {
-    width: 6px;
-}
-
-.books {
-    display: flex;
-    flex-direction: column;
-}
-
-.book {
-    background-color: white;
-    width: auto;
-    padding: 10px 2px;
-    width: 100%;
-    border-top: solid 2px #01A262;
-    cursor: pointer;
-}
-
-.door-left,
-.door-right {
-    position: absolute;
-    width: 50%;
-    top: -1%;
-    height: 101%;
-    background-color: #705B3F;
-    transition: all 0.5s ease;
-    z-index: 20;
-}
-
-.door-left {
-    left: 0;
-    border-right: solid 4px #292117;
-}
-
-.door-right {
-    right: 0;
-    border-left: solid 4px #292117;
-}
-
-.closet:hover .door-left,
-.closet:hover .door-right {
-    width: 3%;
-}
-
-.closet:hover .knob-left,
-.closet:hover .knob-right {
-    opacity: 0;
-}
-
-.knob-left {
-    position: absolute;
-    height: 28px;
-    width: 28px;
-    border-radius: 100%;
-    background-color: #2E251A;
-    top: 50%;
-    left: 70%;
-    transition: ease .5s;
-}
-
-.knob-right {
-    position: absolute;
-    height: 28px;
-    width: 28px;
-    border-radius: 100%;
-    background-color: #2E251A;
-    top: 50%;
-    right: 70%;
-    transition: ease .5s;
-}
-
-.closet-depth {
-    height: 10px;
-    width: 100%;
-    background-color: #2E251A;
-    position: relative;
-}
-
-.closet-depth::before {
-    content: "";
-    position: absolute;
-    right: 0%;
-    bottom: 0%;
-    background-color: white;
-    width: 19px;
-    height: 40px;
-    transform: rotate(-50deg);
-    z-index: 1;
-}
-
-.closet-depth::after {
-    content: "";
-    position: absolute;
-    left: 0%;
-    bottom: 0%;
-    background-color: white;
-    width: 19px;
-    height: 40px;
-    transform: rotate(50deg);
-    z-index: 1;
-}
-
-.add-books-form {
-    width: 600px;
-}
 
 .notes-container {
-    width: 80%;
-    margin: 35px auto;
+    width: 90%;
+    margin: 3vh auto 20vh auto;
     min-height: 800px;
     background: #252525;
 }
 
-.genre-container {
+.book-container {
     width: 80%;
-    margin: 35px auto;
+    margin: 3vh auto 20vh auto;
     min-height: 400px;
     background: #252525;
 }
 
-.trix-button-row span {
-    background-color: white !important;
-}
-
-.modal-box {
-    max-width: 49.29rem !important;
-}
-
 .trix-content {
-    height: 220px !important;
+    min-height: 220px !important;
 }
 
-.collapse-content {
-    box-shadow: 0px 4px 14px -7px rgba(0, 0, 0, 0.7);
-}
-
-.books {
-    display: flex; 
-    flex-direction: row; 
-    overflow-x: auto; 
-    overflow-y: hidden; 
-    gap: 20px; 
-    max-width: 100%; 
-    position: relative;
-    z-index: 1;
-}
-
-.book-container {
-    min-width: 50px; 
-    height: 200px; 
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.book {
-    position: absolute;
-    width: 200px;
-    white-space: nowrap;
-    transform: rotate(-90deg);
-    transform-origin: center;
-    padding: 16px;
-    color: black;
-    border: none;
-    border-left: solid 6px black;
-    border-right: solid 6px black;
-    transition: ease .3s;
-}
 
 .shelf {
-    background-color: #705B3F; 
-    height: 20px; 
+    background-color: #705B3F;
+    height: 20px;
     width: 100%;
     margin-top: -4px;
 }
-.shelf-depth{
-    background-color: #574631; 
-    height: 10px; 
+
+.shelf-depth {
+    background-color: #574631;
+    height: 10px;
     width: 100%;
     margin-top: -4px;
- 
+}
+
+@media only screen and (max-width: 800px) {
+    .library-banner, .notes-banner {
+       justify-content: end; 
+       padding-bottom: 20px;
+    }
+    .notes-banner{
+        height: 25vh;
+    }
+    header{
+        padding: 0px;
+    }
+    .main-header{
+       transition: none;
+       padding: 0rem 1rem;
+    }
+    .active-header-mobile{
+        background-color: black;
+    }
+    .book-container{
+        width: 90%;
+        padding: 40px 20px 0px 20px;
+        min-height: 50vh;
+        margin: 40px auto 120px auto;
+    }
+    .notes-container {
+        width: 90%;
+        margin: 35px auto;
+        min-height: 50vh;
+        background: #252525;
+    }
+}
+
+.trix-button{
+background-color: white!important;
+}
+.auth-container{
+    min-height: 80vh;
 }

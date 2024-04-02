@@ -1,72 +1,100 @@
-<header class="main-header py-6 px-12 text-xl {{ request()->routeIs('register') || request()->routeIs('login') ? 'register-header-bg' : '' }}">
+<header class=" {{ request()->routeIs('register') || request()->routeIs('login') || request()->routeIs('password.request') ? 'register-header-bg' : '' }}">
+    <div class="main-header" x-data="{ isOpen: false }" :class="{'active-header-mobile': isOpen}">
+        <div class="flex items-center justify-between p-4 md:hidden">
+            <a href="/">
+                <div class="flex gap-6 items-center">
+                    <img src="{{ asset('img/logo.svg') }}" alt="Logo Booknote Archive">
+                    <h5 class="font-light leading-none ">Booknote <br> Archive</h5>
+                </div>
+            </a>
 
-    <div class="flex flex-row gap-12 items-center justify-between">
-        <a href="/" >
-        <div class="flex gap-6 items-center">
-            <img  src="{{ asset('img/logo.svg') }}" alt="Logo Booknote Archive">
-            <h3 class="font-bold leading-none ">Booknote <br> Archive</h3>
-        </div>
-        </a>
-        <div class="md:hidden">
-            <button id="menuToggle" class="p-2">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            <button @click="isOpen = !isOpen" class="md:hidden block">
+                <i x-show="!isOpen" class="fa-solid fa-bars"></i>
+                <i x-show="isOpen" class="fa-solid fa-xmark"></i>
             </button>
         </div>
 
-        <div class="hidden md:flex flex-row-reverse gap-2 items-center" id="menu">
-            @if (Route::has('login'))
+        <div class="hidden md:flex flex-row justify-between items-center gap-2">
+            <a href="/">
+                <div class="flex gap-6 items-center">
+                    <img src="{{ asset('img/logo.svg') }}" alt="Logo Booknote Archive">
+                    <h5 class="font-light leading-none ">Booknote <br> Archive</h5>
+                </div>
+            </a>
+            <div class="flex flex-row gap-2">
+                @if (Route::has('login'))
                 @auth
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <button class="px-20 py-2  bg-[#252525] hover:bg-white hover:text-black border-2 text-white">
+                        Sign out
+                    </button>
+                </a>
                 <a href="{{ route('library') }}">
-                            <button class="px-20 py-2 font-bold bg-[#01A262] text-white">
-                                My Library
-                            </button>
-                        </a>
-                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        <button class="px-20 py-2 font-bold bg-black text-white">
-                            Sign out
-                        </button>
-                    </a>
-                    <a href="#">
-                            <button class="px-20 py-2 font-bold">
-                                FAQ
-                            </button>
-                        </a>
-                        <a href="#">
-                            <button class="px-20 py-2 font-bold">
-                                Tutorial
-                            </button>
-                        </a>
-                      
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
+                    <button class="px-20 py-2 bg-[#01a262] border-2 hover:bg-white hover:text-black  text-white">
+                        My Library
+                    </button>
+                </a>
+
                 @else
-                    <a href="{{ route('login') }}">
-                        <button class="px-20 py-2 font-bold bg-white text-black">
-                            Login
-                        </button>
-                    </a>
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}">
-                            <button class="px-20 py-2 font-bold">
-                                Register
-                            </button>
-                        </a>
-                        <a href="#">
-                            <button class="px-20 py-2 font-bold">
-                                FAQ
-                            </button>
-                        </a>
-                        <a href="#">
-                            <button class="px-20 py-2 font-bold">
-                                Tutorial
-                            </button>
-                        </a>
-                    @endif
+                @if (Route::has('register'))
+
+                <a href="{{ route('register') }}">
+                    <button class="px-20 py-2">
+                        Register
+                    </button>
+                </a>
+                @endif
+                <a href="{{ route('login') }}">
+                    <button class="px-20 py-2 bg-white text-black">
+                        Login
+                    </button>
+                </a>
                 @endauth
+                @endif
+            </div>
+        </div>
+
+        <div x-show="isOpen" class="pt-12 flex flex-col gap-2  justify-around text-center w-full mx-auto">
+            @if (Route::has('login'))
+            @auth
+            <div class="flex flex-col w-2/3 mx-auto gap-2 justify-center">
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <button class="px-6 w-full mb-6 py-2 bg-[#252525] border-2 text-white">
+                        Sign out
+                    </button>
+                </a>
+                <a href="{{ route('library') }}">
+                    <button class="px-6 w-full mb-6 py-2 bg-[#01a262] border-2 text-white">
+                        My Library
+                    </button>
+                </a>
+            </div>
+            @else
+            @if (Route::has('register'))
+            <div class="flex flex-col w-2/3 mx-auto gap-2 justify-center">
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+                <a href="{{ route('register') }}">
+                    <button class="px-6 w-full mb-6 py-2 font-bold bg-[#252525] border-2 text-white">
+                        Register
+                    </button>
+                </a>
+                @endif
+                <a href="{{ route('login') }}">
+                    <button class="px-6 w-full mb-6 py-2 font-bold bg-white border-2 text-black">
+                        Login
+                    </button>
+                </a>
+            </div>
+            @endauth
             @endif
         </div>
     </div>
-    <script src="{{ asset('js/mobileMenu.js') }}"></script>
-
 </header>
